@@ -17,7 +17,7 @@ import io.flutter.plugin.common.EventChannel
 import com.robotemi.sdk.TtsRequest
 
 
-class FlutterTemiPlugin :  MethodCallHandler, FlutterPlugin  {
+class FlutterTemiPlugin :  MethodCallHandler, FlutterPlugin, ActivityAware {
 
     private lateinit var channel: MethodChannel
     public lateinit var application_context: Context
