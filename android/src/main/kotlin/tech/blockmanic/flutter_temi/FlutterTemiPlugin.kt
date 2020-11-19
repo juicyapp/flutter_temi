@@ -9,15 +9,15 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry.Registrar
-//import io.flutter.embedding.engine.plugins.FlutterPlugin
-//import io.flutter.embedding.engine.plugins.activity.ActivityAware
-//import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
+import io.flutter.embedding.engine.plugins.FlutterPlugin
+import io.flutter.embedding.engine.plugins.activity.ActivityAware
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import com.robotemi.sdk.*
 import io.flutter.plugin.common.EventChannel
 import com.robotemi.sdk.TtsRequest
 
 
-class FlutterTemiPlugin :  MethodCallHandler  {
+class FlutterTemiPlugin :  MethodCallHandler, FlutterPlugin  {
 
     private lateinit var channel: MethodChannel
     public lateinit var application_context: Context
@@ -41,34 +41,34 @@ class FlutterTemiPlugin :  MethodCallHandler  {
     private val onDetectionStateChangedListenerImpl: OnDetectionStateChangedListenerImpl = OnDetectionStateChangedListenerImpl()
     private val onRobotReadyListenerImpl: OnRobotReadyListenerImpl = OnRobotReadyListenerImpl()
 
-////Flutter plugin
-//    override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-//        channel = MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "flutter_temi")
-//        channel.setMethodCallHandler(this);
-//        application_context = flutterPluginBinding.applicationContext
-//
-//    }
-//
-//    override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
-//        channel.setMethodCallHandler(null)
-//    }
-////
-//    //ActivityAware
-//    override fun onDetachedFromActivity() {
-//        TODO("Not yet implemented")
-//    }
-////
-//    override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
-//        TODO("Not yet implemented")
-//    }
-////
-//    override fun onAttachedToActivity(binding: ActivityPluginBinding) {
-//        activity = binding.activity;
-//    }
-////
-//    override fun onDetachedFromActivityForConfigChanges() {
-//        TODO("Not yet implemented")
-//    }
+    //Flutter plugin
+   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+       channel = MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "flutter_temi")
+       channel.setMethodCallHandler(this);
+       application_context = flutterPluginBinding.applicationContext
+
+   }
+
+   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+       channel.setMethodCallHandler(null)
+   }
+
+   //ActivityAware
+   override fun onDetachedFromActivity() {
+       TODO("Not yet implemented")
+   }
+
+   override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
+       TODO("Not yet implemented")
+   }
+
+   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
+       activity = binding.activity;
+   }
+
+   override fun onDetachedFromActivityForConfigChanges() {
+       TODO("Not yet implemented")
+   }
 
     companion object {
 
