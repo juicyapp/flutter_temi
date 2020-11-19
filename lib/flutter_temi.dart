@@ -70,6 +70,14 @@ class FlutterTemi {
     return await _channel.invokeMethod('temi_battery_data');
   }
 
+  static temiIsHardButtonsDisabled() async {
+    await _channel.invokeMethod('temi_is_hard_buttons_disabled');
+  }
+
+  static temiSetHardButtonsDisabled(bool disabled) async {
+    await _channel.invokeMethod('temi_set_hard_buttons_disabled', disabled);
+  }
+
   static temiShowTopBar() async {
     await _channel.invokeMethod('temi_show_top_bar');
   }

@@ -168,6 +168,14 @@ class FlutterTemiPlugin :  MethodCallHandler, FlutterPlugin, ActivityAware {
             "temi_battery_data" -> {
                 result.success(OnBatteryStatusChangedListenerImpl.batteryToMap(robot.batteryData!!))
             }
+            "temi_set_hard_buttons_disabled" -> {
+                val disabled = call.arguments<Boolean>()
+                robot.setHardButtonsDisabled(disabled)
+                result.success(true)
+            }
+            "temi_is_hard_buttons_disabled" -> {
+                result.success(robot.isHardButtonsDisabled())
+            }
             "temi_show_top_bar" -> {
                 robot.showTopBar()
                 result.success(true)
