@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 
 
@@ -70,8 +69,8 @@ class FlutterTemi {
     return await _channel.invokeMethod('temi_battery_data');
   }
 
-  static temiIsHardButtonsDisabled() async {
-    await _channel.invokeMethod('temi_is_hard_buttons_disabled');
+  static Future<bool> temiIsHardButtonsDisabled() async {
+    return await _channel.invokeMethod('temi_is_hard_buttons_disabled');
   }
 
   static temiSetHardButtonsDisabled(bool disabled) async {

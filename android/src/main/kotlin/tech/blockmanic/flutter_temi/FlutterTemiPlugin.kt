@@ -170,11 +170,12 @@ class FlutterTemiPlugin :  MethodCallHandler, FlutterPlugin, ActivityAware {
             }
             "temi_set_hard_buttons_disabled" -> {
                 val disabled = call.arguments<Boolean>()
-                robot.setHardButtonsDisabled(disabled)
-                result.success(true)
+                robot.isHardButtonsDisabled = disabled
+                result.success(disabled)
             }
             "temi_is_hard_buttons_disabled" -> {
-                result.success(robot.isHardButtonsDisabled())
+                result.success(robot.isHardButtonsDisabled)
+                result.success(true)
             }
             "temi_show_top_bar" -> {
                 robot.showTopBar()
