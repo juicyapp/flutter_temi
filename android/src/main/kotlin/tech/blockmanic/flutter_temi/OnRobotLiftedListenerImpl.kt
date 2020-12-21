@@ -11,11 +11,10 @@ class OnRobotLiftedListenerImpl: OnRobotLiftedListener, EventChannel.StreamHandl
     }
 
     override fun onRobotLifted(isLifted: Boolean, reason: String) {
-        // val responseMap = HashMap<String, Any>(2)
-        // responseMap["isLifted"] = isLifted
-        // responseMap["reason"] = reason
-        // eventSink?.success(responseMap)
-        eventSink?.success(isLifted)
+        val responseMap = HashMap<String, Any>(2)
+        responseMap["isLifted"] = isLifted
+        responseMap["reason"] = reason
+        eventSink?.success(responseMap)
     }
 
     override fun onListen(arguments: Any?, eventSink: EventChannel.EventSink?) {
